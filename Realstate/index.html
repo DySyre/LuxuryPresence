@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cmyk">
+<head>
+    <meta charset="UTF-8">
+    <title>Marcimetzger</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=TimesNewRoman:wght@900&family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="flex min-h-screen" x-data="sidebarApp">
+
+    <!-- Overlay -->
+    <div 
+        class="fixed inset-0 bg-black bg-opacity-50 z-40"
+        x-show="open"
+        x-transition.opacity
+        @click="open = false"
+    ></div>
+
+    <!-- Sidebar -->
+    <div 
+        class="bg-base-200 text-base-content transition-all duration-300 fixed inset-y-0 left-0 z-50 overflow-y-auto"
+        :class="open ? 'w-64' : 'w-0'"
+    >
+        <!-- Close Button -->
+        <div class="flex justify-end p-2" x-show="open" x-transition>
+            <button @click="open = false" class="btn btn-ghost btn-sm">
+                ✕
+            </button>
+        </div>
+
+        <!-- Sidebar Title -->
+        <div class="px-4 py-2 text-xl font-bold" x-show="open" x-transition>
+            <label class="cursor-pointer flex gap-2 items-center">
+                <span class="text-sm">☀️</span>
+                <input id="theme-toggle" type="checkbox" class="toggle toggle-primary" 
+                    @change="toggleTheme($event)">
+                <span class="text-sm">🌙</span>
+            </label>
+        </div>
+
+        <!-- Nav Items -->
+        <ul class="mt-4 space-y-2 px-4" x-show="open" x-transition>
+            <li><a href="index.html" class="block py-2 hover:bg-base-300 rounded pl-2">Home</a></li>
+            <li><a href="listing.html" class="block py-2 hover:bg-base-300 rounded pl-2">Listing</a></li>
+            <li><a href="letsmove.html" class="block py-2 hover:bg-base-300 rounded pl-2">Let's Move</a></li>
+            <li><a href="aboutus.html" class="block py-2 hover:bg-base-300 rounded pl-2">About us</a></li>
+        </ul>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 transition-all duration-300" :class="open ? 'ml-64' : 'ml-0'">
+        <!-- Navbar -->
+        <div class="navbar shadow-sm bg-white text-gray-800 mt-4 p-4 border-b border-gray-200">
+          <div class="navbar-start">
+          <button 
+            @click="toggleSidebar" 
+            class="btn btn-ghost text-gray-800 text-2xl px-4 py-2"
+          >
+            ☰
+          </button>
+        </div>
+            <!-- <div class="navbar-center justify-center">
+                <a href="index.html">
+                    <img src="img/marci.jpg" alt="Company Logo" class="h-16 w-auto">
+                </a>
+            </div>
+        </div> -->
+            <div class="navbar-end flex items-center gap-4">
+                <a href="index.html">
+                    <img src="img/marci.jpg" alt="Company Logo" class="h-20 w-full">
+                </a>
+            </div>
+        </div>
+
+    <!-- Page Content -->
+      <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Background image with parallax -->
+      <div class="absolute inset-0 transform-gpu" id="hero-bg">
+        <img src="img/mtnfallspond.jpg" alt="Luxury Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- Dark overlay -->
+      </div>
+
+      <!-- Content -->
+      <div class="relative text-center px-4 z-10">
+        <h1 class="text-5xl sm:text-6xl md:text-8xl font-serif font-bold text-white mb-6 tracking-wider">
+          MARCI METZGER
+        </h1>
+        <p class="text-lg sm:text-xl md:text-3xl tracking-wide text-white opacity-80">
+          THE RIDGE REALTY GROUP
+        </p>
+        <h6 class="text-xl sm:text-2xl md:text-4xl mt-4 elegant-text text-white tracking-wide">
+          Pahrump Realtor
+        </h6>
+        <button onclick="window.location.href='tel:2069196886'" 
+          class="custom-btn mt-8 px-8 py-4 bg-white text-black font-semibold rounded-lg shadow hover:bg-gray-200 transition">
+          CALL NOW
+        </button>
+      </div>
+    </section>
+
+ <!-- Profile Section -->
+<section class="py-12 bg-black text-white">
+  <div class="container mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 px-4">
+    
+    <!-- Image -->
+    <div class="flex-shrink-0 text-center md:text-left">
+      <img 
+        src="img/Realtor.jpg" 
+        alt="Marci Metzger" 
+        class="w-40 h-40 md:w-64 md:h-64 object-cover rounded-full border-4 border-white shadow-lg mx-auto md:mx-0
+               transition-transform duration-500 hover:scale-105"
+      >
+    </div>
+    
+    <!-- Details -->
+    <div class="flex-1 text-center md:text-left space-y-4 mt-6 md:mt-0 animate-fade-in-up">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold tracking-wide">MARCI METZGER</h2>
+      <p class="text-lg md:text-xl elegant-text">REALTOR FOR NEARLY 3 DECADES!</p>
+      
+      <!-- Clickable Phone -->
+      <p class="text-base md:text-lg">
+        <a href="tel:2069196886" 
+           class="text-blue-500 underline hover:text-blue-700 transition">
+          206-919-6886
+        </a>
+      </p>
+
+      <!-- Website Button -->
+      <button 
+        onclick="window.location.href='https://marcimetzger.com/'" 
+        class="px-6 py-3 bg-white text-black font-semibold rounded-full shadow hover:bg-gray-200 transition"
+      >
+        Visit Website
+      </button> 
+    </div>
+  </div>
+</section>
+    
+ <!-- Get It Sold Section -->
+<section class="py-16 bg-black text-white px-4">
+  <div class="max-w-6xl mx-auto space-y-12">
+
+    <!-- Section Title -->
+    <div class="text-center">
+      <h2 class="text-4xl font-serif font-bold mb-4">GET IT SOLD</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Top Residential Sales Last 5 Years
+      </p>
+      <p class="text-lg text-gray-400 mt-2">
+        We helped nearly 90 clients in 2021, and closed $28.5 million in sales!
+      </p>
+    </div>
+
+    <!-- Card 1 -->
+    <div class="bg-white bg-opacity-5 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+      <!-- Image -->
+      <img src="img/modern1.jpg" alt="Team Excellence" class="w-full md:w-1/2 h-64 object-cover">
+      <!-- Description -->
+      <div class="p-8 flex flex-col justify-center md:w-1/2">
+        <h3 class="text-2xl font-serif font-semibold mb-4">Our Team Works Hard</h3>
+        <p class="text-gray-300">
+          Our team works hard every day to grow and learn, so that we may continue to excel in our market. Our clients deserve our best, & we want to make sure our best is better every year.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white bg-opacity-5 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row-reverse">
+      <!-- Image -->
+      <img src="img/modern2.jpg" alt="Listings & Strategy" class="w-full md:w-1/2 h-64 object-cover">
+      <!-- Description -->
+      <div class="p-8 flex flex-col justify-center md:w-1/2">
+        <h3 class="text-2xl font-serif font-semibold mb-4">Don't Just List it... Get it SOLD!</h3>
+        <p class="text-gray-300">
+          We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white bg-opacity-5 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+      <!-- Image -->
+      <img src="img/concept1.jpg" alt="Guide to Buyers" class="w-full md:w-1/2 h-64 object-cover">
+      <!-- Description -->
+      <div class="p-8 flex flex-col justify-center md:w-1/2">
+        <h3 class="text-2xl font-serif font-semibold mb-4">Guide to Buyers</h3>
+        <p class="text-gray-300">
+          Nobody knows the market like we do. Enjoy having a pro at your service. Market analysis, upgrades lists, contractors on speed dial, & more!
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Carousel section -->
+ <section class="relative py-16 absolute inset-0 bg-black bg-opacity-30">
+  <h2 class="text-center text-4xl font-serif font-bold mb-12">Featured Estate</h2>
+
+  <!-- Carousel container -->
+  <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg">
+      <div class="carousel w-full h-[500px] rounded-lg overflow-hidden relative">
+        
+      <!-- Slides wrapper with parallax -->
+      <div class="carousel w-full h-[500px] relative" id="carousel-bg">
+        <!-- Slides -->
+        <div id="slide1" class="carousel-item relative w-full">
+          <img src="img/slide1.jpg" class="w-full h-[500px] object-cover" alt="Estate 1">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">
+            Estate 1
+          </div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide7" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide2" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+
+        <div id="slide2" class="carousel-item relative w-full">
+          <img src="img/slide2.jpg" class="w-full h-[500px] object-cover" alt="Estate 2">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 2</div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide1" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide3" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+
+        <div id="slide3" class="carousel-item relative w-full">
+          <img src="img/slide3.jpg" class="w-full h-[500px] object-cover" alt="Estate 4">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 3</div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide2" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide4" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+
+        <div id="slide4" class="carousel-item relative w-full">
+          <img src="img/slide4.jpg" class="w-full h-[500px] object-cover" alt="Estate 5">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 4</div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide3" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide5" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+
+        <div id="slide5" class="carousel-item relative w-full">
+          <img src="img/slide5.jpg" class="w-full h-[500px] object-cover" alt="Estate 6">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 5</div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide4" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide6" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+
+          <div id="slide6" class="carousel-item relative w-full">
+          <img src="img/slide6.jpg" class="w-full h-[500px] object-cover" alt="Estate 6">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 6</div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide5" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide7" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+
+        <div id="slide7" class="carousel-item relative w-full">
+          <img src="img/slide7.jpg" class="w-full h-[500px] object-cover" alt="Estate 7">
+          <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 7</div>
+          <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+            <a href="#slide6" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
+            <a href="#slide1" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❯</a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <!-- Thumbnail Previews -->
+    <div class="flex justify-center gap-4 mt-6">
+      <a href="#slide1" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide1.jpg" class="w-full h-full object-cover">
+      </a>
+      <a href="#slide2" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide2.jpg" class="w-full h-full object-cover">
+      </a>
+      <a href="#slide3" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide3.jpg" class="w-full h-full object-cover">
+      </a>
+      <a href="#slide4" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide4.jpg" class="w-full h-full object-cover">
+      </a>
+      <a href="#slide5" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide5.jpg" class="w-full h-full object-cover">
+      </a>
+      <a href="#slide6" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide6.jpg" class="w-full h-full object-cover">
+      </a>
+      <a href="#slide7" class="w-20 h-12 overflow-hidden rounded-lg border-2 border-gray-300">
+        <img src="img/slide7.jpg" class="w-full h-full object-cover">
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Find Your Dream Home Section -->
+<section class="py-16 bg-black text-white">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h4 class="text-3xl font-serif mb-12 tracking-wide">Find Your Dream Home</h4>
+    <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Location -->
+      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+        <option disabled selected>Location</option>
+        <option>Pahrump</option>
+        <option>Las Vegas</option>
+      </select>
+
+      <!-- Property Type -->
+      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+        <option disabled selected>Type</option>
+        <option>House</option>
+        <option>Condo</option>
+        <option>Apartment</option>
+        <option>Land</option>
+      </select>
+
+      <!-- Sort By -->
+      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+        <option disabled selected>Sort By</option>
+        <option>Newest</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+      </select>
+
+      <!-- Bedrooms -->
+      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+        <option disabled selected>Bedrooms</option>
+        <option>Any</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3+</option>
+      </select>
+
+      <!-- Bathrooms -->
+      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+        <option disabled selected>Baths</option>
+        <option>Any</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3+</option>
+      </select>
+
+      <!-- Min Price -->
+      <input type="number" placeholder="Min Price" class="input input-bordered bg-black border-white text-white placeholder-gray-400">
+
+      <!-- Max Price -->
+      <input type="number" placeholder="Max Price" class="input input-bordered bg-black border-white text-white placeholder-gray-400">
+
+      <!-- Search Button -->
+      <button class="btn bg-white text-black font-semibold col-span-full hover:bg-gray-200 transition">Search Now</button>
+    </form>
+  </div>
+</section>
+
+ 
+    <section class="py-16 bg-gray-100"> <!-- optional light bg for contrast -->
+    <div class="max-w-6xl mx-auto text-center px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
+          <img src="img/company1.jpg" alt="Company Logo" class="w-auto mx-auto">
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
+          <img src="img/company2.jpg" alt="Company Logo" class="w-auto mx-auto">
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
+          <img src="img/company3.jpg" alt="Company Logo" class="w-auto mx-auto">
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
+          <img src="img/company4.jpg" alt="Company Logo" class="w-auto mx-auto">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- Our Services -->
+      <section class="py-16 bg-black text-white">
+        <div class="max-w-3xl lg:max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-serif font-semibold text-center mb-10">Our Services</h2>
+
+          <!-- Grid wrapper -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Service 1 -->
+              <div class="bg-white/10 shadow-lg rounded-xl overflow-hidden hover:scale-105 transition flex flex-col h-full">
+                <figure class="h-48 w-full overflow-hidden">
+                  <img src="img/service1.jpg" alt="Real Estate Done Right" class="w-full h-full object-cover">
+                </figure>
+                <div class="p-6 md:p-8 flex-1 flex flex-col justify-between min-h-[220px]">
+                  <h3 class="text-2xl font-semibold mb-3">Real Estate Done Right</h3>
+                  <p class="text-gray-200">
+                    Nervous about your property adventure? Don’t be. Whether you're buying, selling, investing, or just curious, our team ensures you get the best experience possible!
+                  </p>
+                </div>
+              </div>
+
+              <!-- Service 2 -->
+              <div class="bg-white/10 shadow-lg rounded-xl overflow-hidden hover:scale-105 transition flex flex-col h-full">
+                <figure class="h-48 w-full overflow-hidden">
+                  <img src="img/service2.jpg" alt="Commercial & Residential" class="w-full h-full object-cover">
+                </figure>
+                <div class="p-6 md:p-8 flex-1 flex flex-col justify-between min-h-[220px]">
+                  <h3 class="text-2xl font-semibold mb-3">Commercial & Residential</h3>
+                  <p class="text-gray-200">
+                    Condo, mansion, fixer-upper, or luxury—we can help with all of it! We live, work, and play in this community, happy to help you invest your hard-earned dollars.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Service 3 -->
+              <div class="bg-white/10 shadow-lg rounded-xl overflow-hidden hover:scale-105 transition flex flex-col h-full">
+                <figure class="h-48 w-full overflow-hidden">
+                  <img src="img/service3.jpg" alt="Rely on Expertise" class="w-full h-full object-cover">
+                </figure>
+                <div class="p-6 md:p-8 flex-1 flex flex-col justify-between min-h-[220px]">
+                  <h3 class="text-2xl font-semibold mb-3">Rely on Expertise</h3>
+                  <p class="text-gray-200">
+                    Questions about affordability, credit, or loan options? Trust us to connect you with the right experts so you feel confident every step of the way.
+                  </p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Testimonials -->
+      <section class="py-16 bg-black text-white">
+        <div class="max-w-3xl lg:max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-serif font-semibold text-center mb-10">Testimonials</h2>
+
+          <!-- Grid wrapper -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            
+           <!-- Testimonial 1 -->
+            <div class="card w-full bg-white/10 shadow-lg rounded-xl hover:scale-105 transition h-full">
+              <div class="card-body p-6 md:p-8 flex flex-col justify-between h-full">
+                <p class="text-gray-200 italic text-base md:text-lg mb-4">
+                  "Marci was amazing! She helped us find our dream home."
+                </p>
+                <p class="text-right font-semibold text-white text-base md:text-lg">— Happy Client</p>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="card w-full bg-white/10 shadow-lg rounded-xl hover:scale-105 transition h-full">
+              <div class="card-body p-6 md:p-8 flex flex-col justify-between h-full">
+                <p class="text-gray-200 italic text-base md:text-lg mb-4">
+                  "Professional and trustworthy! Highly recommend."
+                </p>
+                <p class="text-right font-semibold text-white text-base md:text-lg">— Satisfied Buyer</p>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="card w-full bg-white/10 shadow-lg rounded-xl hover:scale-105 transition h-full">
+              <div class="card-body p-6 md:p-8 flex flex-col justify-between h-full">
+                <p class="text-gray-200 italic text-base md:text-lg mb-4">
+                  "Excellent service from start to finish. Very knowledgeable."
+                </p>
+                <p class="text-right font-semibold text-white text-base md:text-lg">— Homeowner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Contact Section -->
+      <section class="py-16 bg-amber-content/50">
+        <div class="w-full sm:max-w-full md:max-w-3xl lg:max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          
+          <!-- Contact Form -->
+          <form class="space-y-6 bg-white bg-opacity-10 p-8 rounded-lg shadow-lg border border-white">
+            <h4 class="text-3xl font-serif font-semibold mb-6 text-center lg:text-left">Message Us</h4>
+            
+            <input
+              type="text"
+              placeholder="Name"
+              class="w-full bg-transparent text-white placeholder-gray-400 border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400"
+            />
+
+            <input
+              type="email"
+              placeholder="Email"
+              class="w-full bg-transparent text-white placeholder-gray-400 border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400"
+            />
+
+            <textarea
+              placeholder="Message"
+              class="w-full bg-transparent text-white placeholder-gray-400 border-2 border-gray-300 rounded-lg px-4 py-3 min-h-[140px] focus:outline-none focus:border-blue-400"
+            ></textarea>
+            
+            <button class="btn bg-white text-black font-semibold w-full hover:bg-gray-200 transition">Send</button>
+          </form>
+
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <h4 class="text-3xl font-serif font-semibold mb-4">Call or Visit</h4>
+            
+            <div class="space-y-4">
+              <!-- WhatsApp Button -->
+              <a href="https://api.whatsapp.com/send/?phone=14259412560&text&type=phone_number&app_absent=0" target="_blank" 
+                class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition">
+                Message us on WhatsApp
+              </a>  
+
+              <p>Marci Metzger - THE RIDGE REALTY GROUP</p>
+              <p>3190 HW-160, Suite F, Pahrump, Nevada 89048, United States</p>
+
+              <!-- Clickable phone link -->
+              <p>
+                <a href="tel:2069196886" class="text-blue-500 underline hover:text-blue-700 transition">
+                  (206) 919-6886
+                </a>
+              </p>
+            </div>
+
+            <!-- Office Hours Section -->
+            <div x-data="{ open: false }" class="space-y-4">
+              <h5 class="text-xl font-semibold">Office Hours</h5>
+              
+              <!-- Current status -->
+              <p class="text-green-500 font-medium">Open today: 08:00 am – 07:00 pm</p>
+              
+              <!-- Dropdown toggle -->
+              <button 
+                @click="open = !open"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+              >
+                View Full Hours
+              </button>
+
+              <!-- Dropdown content -->
+              <div 
+                x-show="open" 
+                x-transition 
+                class="mt-4 space-y-2 text-sm text-gray-800 bg-white/70 backdrop-blur-md p-4 rounded-lg shadow-lg"
+              >
+                <p><span class="font-semibold text-blue-600">Mon:</span> 08:00 am – 07:00 pm</p>
+                <p><span class="font-semibold text-blue-600">Tue:</span> 08:00 am – 07:00 pm</p>
+                <p><span class="font-semibold text-blue-600">Wed:</span> 08:00 am – 07:00 pm</p>
+                <p><span class="font-semibold text-blue-600">Thu:</span> 08:00 am – 07:00 pm</p>
+                <p><span class="font-semibold text-blue-600">Fri:</span> 08:00 am – 07:00 pm</p>
+                <p><span class="font-semibold text-blue-600">Sat:</span> 08:00 am – 07:00 pm</p>
+                <p><span class="font-semibold text-blue-600">Sun:</span> 08:00 am – 07:00 pm</p>
+              </div>
+
+              <!-- Note -->
+              <p class="text-gray-500 text-sm">
+                Appointments outside office hours available upon request. Just call!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Maps Section -->
+      <section class="w-full h-96">
+        <iframe 
+          src="https://www.google.com/maps?daddr=3190+HW-160,+Suite+F,+Pahrump,+Nevada+89048,+United+States&output=embed" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          class="rounded-lg shadow-lg">
+        </iframe>
+      </section>
+    </section>
+
+      </div>
+    </div>
+</body>
+
+
+
+<!-- Footer Section -->
+<section class="bg-black text-white py-8">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 space-y-4 md:space-y-0">
+    
+  
+    <!-- Social Icons -->
+    <div class="flex gap-4">
+      <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm4.75-.88a1.12 1.12 0 110 2.24 1.12 1.12 0 010-2.24z"/></svg>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.88v-6.99h-2.1v-2.89h2.1V9.62c0-2.07 1.23-3.22 3.11-3.22.9 0 1.84.16 1.84.16v2.02h-1.04c-1.03 0-1.35.64-1.35 1.3v1.56h2.3l-.37 2.89h-1.93v6.99A10 10 0 0022 12z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-400 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11.02 5 2.5 2.5 0 01-.02-5zM3 9h4v12H3V9zm7.5 0h3.8v1.68h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.08V21h-4v-5.34c0-1.27-.03-2.9-1.77-2.9-1.78 0-2.05 1.39-2.05 2.83V21h-4V9z"/></svg>
+      </a>
+    </div>
+      <div class="mt-8 text-center">
+        <!-- Clickable address (Google Maps link) -->
+        <p>
+          <a href="https://www.google.com/maps/search/?api=1&query=3190+HW-160,+Suite+F,+Pahrump,+NV" 
+            target="_blank" 
+            class="text-blue-500 underline hover:text-blue-700 transition">
+            3190 HW-160, Suite F, Pahrump, NV
+          </a>
+        </p>
+
+        <!-- Clickable phone link -->
+        <p>
+          <a href="tel:2069196886" 
+            class="text-blue-500 underline hover:text-blue-700 transition">
+            (206) 919-6886
+          </a>
+        </p>
+      </div>
+    <!-- Copyright -->
+    <p class="text-sm text-gray-400 text-center md:text-right">
+      © 2023 Marci METZGER Homes - All Rights Reserved
+    </p>
+  </div>
+</section>
+
+</html>
+
+<script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('sidebarApp', () => ({
+        open: false,
+        toggleSidebar() {
+            this.open = !this.open;
+        },
+        toggleTheme(e) {
+            document.documentElement.setAttribute('data-theme', e.target.checked ? 'dark' : 'cmyk');
+        }
+    }));
+});
+</script>
+
+<script>
+  // Parallax scroll effect
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const bg = document.getElementById('hero-bg');
+    bg.style.transform = `translateY(${scrolled * 0.3}px)`; // Adjust 0.3 for speed
+  });
+</script>
