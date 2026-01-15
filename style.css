@@ -1,7 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS */
+@layer utilities {
+
+  /* Cards container default: mobile first (stacked) */
+  .cards {
+    display: flex;
+    flex-direction: column; /* mobile stacked */
+    background-color: rgba(255, 255, 255, 0.05); 
+    border-radius: 0.5rem;  
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    overflow: hidden;
+    gap: 1rem; /* spacing between cards */
+  }
+
+  .subcards, #subcards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;  /* full width for mobile */
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Desktop: flex row */
+  @media (min-width: 768px) {
+    .cards {
+      flex-direction: row; /* horizontal layout on desktop */
+      gap: 2rem;          /* optional spacing between cards horizontally */
+    }
+
+    .subcards, #subcards {
+      width: 50%;          /* adjust width of text/image inside cards */
+      padding: 2rem;       /* same padding */
+    }
+  }
+
+  /* Carousel image zoom cursor */
+  /* Enable zoom cursor only on mobile */
+  @media (max-width: 768px) {
+    .carousel-image {
+      cursor: zoom-in;
+    }
+  }
+
+  /* Prevent body scroll when zoom is open */
+  .zoom-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  #zoomed-image {
+  touch-action: pinch-zoom;
+  }
+
+  /* Marquee styles */
+
+  .marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 25s linear infinite;
+  }
+
+  .marquee-item {
+    flex: 0 0 auto;
+    height: 200px;
+    width: 220px;
+    padding: 1.5rem;
+    margin-right: 2rem;
+
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .marquee-item img {
+    min-height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Pause on hover */
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #f3f4f6, transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #f3f4f6, transparent);
+}
+
+
+
+.select {
+  background-color: black;
+  color: white;
+  border: 2px solid #444;
+
+  /* smooth luxury feel */
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* After selection */
+.select.border-white {
+  border-color: #C9A14A; /* gold accent */
+  box-shadow: 0 0 0 1px rgba(201, 161, 74, 0.4);
+}
+
+/* Focus (keyboard + tap) */
+.select:focus {
+  outline: none;
+  border-color: #C9A14A;
+  box-shadow: 0 0 0 2px rgba(201, 161, 74, 0.5);
+}
+
+.input {
+  background-color: black;
+  color: white;
+  border: 2px solid #444;
+
+  /* smooth luxury feel */
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* After selection */
+.input.border-white {
+  border-color: #C9A14A; /* gold accent */
+  box-shadow: 0 0 0 1px rgba(201, 161, 74, 0.4);
+}
+
+/* Focus (keyboard + tap) */
+.input:focus {
+  outline: none;
+  border-color: #C9A14A;
+  box-shadow: 0 0 0 2px rgba(201, 161, 74, 0.5);
+}
+
+
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
 }
+
+font-family: 'Cinzel', serif;
+font-family: 'Poppins', sans-serif;
+
+:root {
+  --gold: #C9A14A;
+  --charcoal: #111111;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Cinzel', serif;
@@ -73,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 64px; /* Default height */
     width: auto;
     transition: height 0.3s ease;
-    cursor: crosshair;
+    
 }
 
 /* Message */
@@ -81,6 +272,26 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
 }
 
+#FrontPage > div.relative.text-center.px-4.z-10 > h1{
+    text-transform: uppercase;
+}
+#FrontPage > div.relative.text-center.px-4.z-10 > p{
+    text-transform: uppercase;
+}
+
+#FrontPage > div.relative.text-center.px-4.z-10 > h6{
+    text-transform: uppercase;
+}
+
+#Realtor > h2 {
+    text-transform: uppercase
+     !important;
+   
+}
+
+#Realtor > p.text-base.sm\:text-lg > a{
+    color : #fff;
+}
 
 
 /* Mobile styling */
@@ -121,14 +332,105 @@ h1, h2, h3, h4, h5, h6 {
       font-size: 34px;
     }
 
+    #Realtor > h2{
+    font-size: 64px;
 }
 
-
-
-
-/* Medium screens ≥ 768px (Tailwind md) */
-@media (min-width: 768px) {
-    .logo-img {
-        height: 4rem; /* h-16 = 64px */
+    #Realtor > p.text-lg.sm\:text-xl.md\:text-2xl.elegant-text{
+        font-size: 40px;
     }
+
+    #Realtor > p.text-base.sm\:text-lg > a{
+        font-size: 32px;
+    }
+
+    #DropdownSearch select{
+      height: 48px;
+    }
+
+    #DropdownSearch input{
+      height: 48px;
+    }
+
+}
+
+#ContactInfo{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 0.5rem;
+  border: 2px solid #7e5f1b;
+
+  /* smooth luxury feel */
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+#ContactDetails > div:nth-child(2) > a{
+    color: #fff;
+}
+
+#ContactDetails > div:nth-child(2) > p.text-base.sm\:text-lg > a{
+    color: #000;
+    cursor: pointer;
+}
+
+#ExternalLink a
+{
+    color: #fff;
+}
+
+/* Medium screens ≥ 768px (Tailwind md)  h-16 = 64px */
+/* @media (max-width: 768px) {
+    .logo-img {
+        height: 4rem; 
+    }
+    #GetSold >div{
+    gap: 2rem !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important; 
+    }
+    
+    #GetSold >div > img{
+        width: 90% !important;
+        margin: 5% !important;
+    }
+    #GetSold > div >h3{
+        text-align: center !important;
+        
+  }
+    #GetSold > div>div{
+        width: 80% !important;
+        margin: 0 auto !important;
+    }
+} */
+
+
+/* Desktop: 769px and above */
+@media (min-width: 769px) {
+  .MainView {
+    display: flex;
+    min-height: 100vh;
+  }
+}
+
+/* Prevent horizontal overflow globally in MainView */
+@media (max-width: 768px) {
+  .MainView {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;        /* force container to match viewport */
+    max-width: 100%;    /* prevent children from growing wider */
+    overflow-x: hidden; /* hide any accidental overflow */
+    box-sizing: border-box; /* include padding in width calculations */
+  }
+
+  /* Optional: make all direct children responsive */
+  .MainView > * {
+    max-width: 100%;    /* prevent child elements from exceeding container */
+    box-sizing: border-box;
+  }
 }

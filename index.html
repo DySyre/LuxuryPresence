@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div class="flex min-h-screen" x-data="sidebarApp">
+<div class="MainView" x-data="sidebarApp">
 
     <!-- Overlay -->
     <div 
@@ -59,7 +59,7 @@
 
           <div class="flex justify-center flex-1">
               <a href="index.html">
-                  <img src="img/marci.jpg" alt="Company Logo" class="max-h-64 max-w-2xl" id="logo-img">
+                  <img src="img/marci.jpg" alt="Company Logo" class="max-h-32 max-w-2xl" id="logo-img">
               </a>
           </div>
       </div>
@@ -67,18 +67,26 @@
     <!-- Page Content -->
       <section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="FrontPage">
       <!-- Background image with parallax -->
-      <div class="absolute inset-0 transform-gpu" id="hero-bg">
-        <img src="img/mtnfallspond.jpg" alt="Luxury Background" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div> <!-- Dark overlay -->
+    <div class="absolute inset-0" id="hero-bg">
+        <!-- Background Image -->
+        <img 
+          src="img/mtnfallspond.jpg" 
+          alt="Luxury Background" 
+          class="w-full h-full object-cover"
+        >
+
+        <!-- Overlay ONLY over the image -->
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
+
 
       <!-- Content -->
       <div class="relative text-center px-4 z-10">
         <h1 class="text-5xl sm:text-6xl md:text-8xl font-serif font-bold text-white mb-6 tracking-wider">
-          MARCI METZGER
+          Marci Metzger
         </h1>
         <p class="text-lg sm:text-xl md:text-3xl tracking-wide text-white opacity-80">
-          THE RIDGE REALTY GROUP
+          The ridge realty group
         </p>
         <h6 class="text-xl sm:text-2xl md:text-4xl mt-4 elegant-text text-white tracking-wide">
           Pahrump Realtor
@@ -91,50 +99,58 @@
     </section>
 
  <!-- Profile Section -->
-<section class="py-12 bg-black text-white">
-  <div class="container mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 px-4">
+<section class="bg-black text-white flex items-center justify-center sm:min-h-40 py-8 sm:py-12">
+  <div class="container mx-auto px-4 text-center space-y-6">
     
-    <!-- Image -->
-    <div class="flex-shrink-0 text-center md:text-left max-h-full">
-      <img 
-        src="img/Realtor.jpg" 
-        alt="Marci Metzger"
-        class="aspect-square w-40 md:w-64 max-h-64
-              object-cover rounded-full
-              border-4 border-white shadow-lg
-              mx-auto md:mx-0
-              transition-transform duration-500 hover:scale-105"
-      >
+    <!-- Big Center Image -->
+    <div class="flex justify-center">
+      <div class="border-4 border-white shadow-2xl">
+        <img 
+          src="img/Realtor.jpg"
+          alt="Marci Metzger"
+          class="aspect-square w-64 sm:w-72 md:w-96 object-cover"
+        >
+      </div>
     </div>
 
-    
     <!-- Details -->
-    <div class="flex-1 text-center md:text-left space-y-4 mt-6 md:mt-0 animate-fade-in-up">
-      <h2 class="text-3xl md:text-4xl font-serif font-bold tracking-wide">MARCI METZGER</h2>
-      <p class="text-lg md:text-xl elegant-text">REALTOR FOR NEARLY 3 DECADES!</p>
-      
-      <!-- Clickable Phone -->
-      <p class="text-base md:text-lg">
-        <a href="tel:2069196886" 
-           class="text-blue-500 underline hover:text-blue-700 transition">
-          206-919-6886
-        </a>
-      </p>
+    <div id="Realtor" class="space-y-2">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold">
+        Marci Metzger
+      </h2>
 
-      <!-- Website Button -->
+      <p class="text-lg sm:text-xl md:text-2xl elegant-text">
+        REALTOR FOR NEARLY 3 DECADES!
+      </p>
+        <p class="text-base sm:text-lg">
+          <a
+            href="tel:2069196886"
+            class="group relative inline-block text-blue-500 hover:text-blue-700 transition-colors duration-300"
+          >
+            206-919-6886
+
+            <!-- Left underline -->
+            <span class="absolute -bottom-1 left-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+
+            <!-- Right underline -->
+            <span class="absolute -bottom-1 right-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+          </a>
+        </p>
       <button 
         onclick="window.location.href='https://marcimetzger.com/'" 
-        class="px-6 py-3 bg-white text-black font-semibold rounded-full shadow hover:bg-gray-200 transition"
+        class="custom-btn mt-8 px-8 py-4 bg-white text-black font-semibold rounded-lg shadow hover:bg-gray-200 transition"
       >
-        Visit Website
-      </button> 
+        VISIT WEBSITE
+      </button>
     </div>
+
   </div>
 </section>
+
     
  <!-- Get It Sold Section -->
 <section class="py-16 bg-black text-white px-4">
-  <div class="max-w-6xl mx-auto space-y-12">
+  <div class="max-w-6xl mx-auto space-y-12" id="GetSold">
 
     <!-- Section Title -->
     <div class="text-center">
@@ -190,18 +206,23 @@
 </section>
 
     <!-- Carousel section -->
- <section class="relative py-16 absolute inset-0 bg-black bg-opacity-30">
+ <section class="relative py-16 absolute inset-0">
   <h2 class="text-center text-4xl font-serif font-bold mb-12">Featured Estate</h2>
 
   <!-- Carousel container -->
-  <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg">
+  <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg bg-[#C9A14A] bg-opacity-50 p-4" id="Carousel">
       <div class="carousel w-full h-[500px] rounded-lg overflow-hidden relative">
         
       <!-- Slides wrapper with parallax -->
       <div class="carousel w-full h-[500px] relative" id="carousel-bg">
         <!-- Slides -->
         <div id="slide1" class="carousel-item relative w-full">
-          <img src="img/slide1.jpg" class="w-full h-[500px] object-cover" alt="Estate 1">
+          <img 
+             src="img/slide1.jpg"
+             data-zoom
+             class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110"
+             alt="Estate 1">
+
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">
             Estate 1
           </div>
@@ -212,7 +233,11 @@
         </div>
 
         <div id="slide2" class="carousel-item relative w-full">
-          <img src="img/slide2.jpg" class="w-full h-[500px] object-cover" alt="Estate 2">
+          <img 
+             src="img/slide2.jpg"
+             data-zoom
+             class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110"
+             alt="Estate 2">
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 2</div>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
             <a href="#slide1" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
@@ -221,7 +246,11 @@
         </div>
 
         <div id="slide3" class="carousel-item relative w-full">
-          <img src="img/slide3.jpg" class="w-full h-[500px] object-cover" alt="Estate 4">
+          <img 
+             src="img/slide3.jpg"
+             data-zoom
+             class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110"
+             alt="Estate 3">
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 3</div>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
             <a href="#slide2" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
@@ -230,7 +259,11 @@
         </div>
 
         <div id="slide4" class="carousel-item relative w-full">
-          <img src="img/slide4.jpg" class="w-full h-[500px] object-cover" alt="Estate 5">
+          <img 
+              src="img/slide4.jpg"
+              data-zoom
+              class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110"
+              alt="Estate 4">
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 4</div>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
             <a href="#slide3" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
@@ -239,7 +272,11 @@
         </div>
 
         <div id="slide5" class="carousel-item relative w-full">
-          <img src="img/slide5.jpg" class="w-full h-[500px] object-cover" alt="Estate 6">
+          <img 
+             src="img/slide5.jpg"
+             data-zoom
+             class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110"
+             alt="Estate 5">
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 5</div>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
             <a href="#slide4" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
@@ -248,7 +285,11 @@
         </div>
 
           <div id="slide6" class="carousel-item relative w-full">
-          <img src="img/slide6.jpg" class="w-full h-[500px] object-cover" alt="Estate 6">
+          <img 
+             src="img/slide6.jpg"
+             data-zoom
+             class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110 transition-transform duration-300 ease-in-out hover:scale-110"
+             alt="Estate 6">
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 6</div>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
             <a href="#slide5" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
@@ -257,7 +298,11 @@
         </div>
 
         <div id="slide7" class="carousel-item relative w-full">
-          <img src="img/slide7.jpg" class="w-full h-[500px] object-cover" alt="Estate 7">
+          <img 
+            src="img/slide7.jpg"
+            data-zoom
+            class="carousel-image w-full h-[500px] object-cover cursor-zoom-in transition-transform duration-300 ease-in-out hover:scale-110 transition-transform duration-300 ease-in-out hover:scale-110"
+            alt="Estate 7">
           <div class="absolute bottom-6 left-6 text-white font-serif text-2xl bg-black bg-opacity-50 p-3 rounded">Estate 7</div>
           <div class="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
             <a href="#slide6" class="btn btn-circle bg-white bg-opacity-70 text-black hover:bg-opacity-100">❮</a>
@@ -292,25 +337,39 @@
       </a>
     </div>
   </div>
+  <!-- Mobile Image Zoom Overlay -->
+<div id="image-zoom-overlay"
+     class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center">
+  
+  <img id="zoomed-image"
+       class="max-w-full max-h-full object-contain transition-transform duration-300">
+
+  <!-- Close button -->
+  <button id="close-zoom"
+          class="absolute top-4 right-4 text-white text-3xl">
+    ✕
+  </button>
+</div>
+
 </section>
 
 
 
 <!-- Find Your Dream Home Section -->
 <section class="py-16 bg-black text-white">
-  <div class="max-w-6xl mx-auto px-4 text-center">
+  <div class="max-w-6xl mx-auto px-4 text-center" id="DropdownSearch">
     <h4 class="text-3xl font-serif mb-12 tracking-wide">Find Your Dream Home</h4>
     <form class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       
       <!-- Location -->
-      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+      <select class="select select-bordered bg-black border-white text-white placeholder-white sm:col-span-2 lg:col-span-1">
         <option disabled selected>Location</option>
         <option>Pahrump</option>
         <option>Las Vegas</option>
       </select>
 
       <!-- Property Type -->
-      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+      <select class="select select-bordered bg-black border-white text-white placeholder-white sm:col-span-2 lg:col-span-1">
         <option disabled selected>Type</option>
         <option>House</option>
         <option>Condo</option>
@@ -319,7 +378,7 @@
       </select>
 
       <!-- Sort By -->
-      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+      <select class="select select-bordered bg-black border-white text-white placeholder-white sm:col-span-2 lg:col-span-1">
         <option disabled selected>Sort By</option>
         <option>Newest</option>
         <option>Price: Low to High</option>
@@ -327,7 +386,7 @@
       </select>
 
       <!-- Bedrooms -->
-      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+      <select class="select select-bordered bg-black border-white text-white placeholder-white sm:col-span-2 lg:col-span-1">
         <option disabled selected>Bedrooms</option>
         <option>Any</option>
         <option>1</option>
@@ -336,7 +395,7 @@
       </select>
 
       <!-- Bathrooms -->
-      <select class="select select-bordered bg-black border-white text-white placeholder-white">
+      <select class="select select-bordered bg-black border-white text-white placeholder-white sm:col-span-2 lg:col-span-1">
         <option disabled selected>Baths</option>
         <option>Any</option>
         <option>1</option>
@@ -344,42 +403,64 @@
         <option>3+</option>
       </select>
 
-      <!-- Min Price -->
-      <input type="number" placeholder="Min Price" class="input input-bordered bg-black border-white text-white placeholder-gray-400">
+      <!-- Min Price --> 
+      <input type="number" placeholder="Min Price" class="input input-bordered bg-black border-white text-white placeholder-gray-400 lg:col-span-1">
 
       <!-- Max Price -->
-      <input type="number" placeholder="Max Price" class="input input-bordered bg-black border-white text-white placeholder-gray-400">
+      <input type="number" placeholder="Max Price" class="input input-bordered bg-black border-white text-white placeholder-gray-400 lg:col-span-1">
 
       <!-- Search Button -->
-      <button class="btn bg-white text-black font-semibold col-span-full hover:bg-gray-200 transition">Search Now</button>
+      <button class="btn bg-white text-black font-semibold col-span-full hover:bg-gray-200 transition">SEARCH NOW</button>
     </form>
   </div>
 </section>
 
- 
-    <section class="py-16 bg-gray-100"> <!-- optional light bg for contrast -->
-    <div class="max-w-6xl mx-auto text-center px-6">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
-          <img src="img/company1.jpg" alt="Company Logo" class="w-auto mx-auto">
+<section class="py-32 bg-gray-100 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 text-center" id="OurPartners">
+
+    <div class="marquee">
+      <div class="marquee-track">
+
+        <!-- Logo item -->
+        <div class="marquee-item">
+          <img src="img/company1.jpg" alt="Company Logo">
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
-          <img src="img/company2.jpg" alt="Company Logo" class="w-auto mx-auto">
+        <div class="marquee-item">
+          <img src="img/company2.jpg" alt="Company Logo">
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
-          <img src="img/company3.jpg" alt="Company Logo" class="w-auto mx-auto">
+        <div class="marquee-item">
+          <img src="img/company3.jpg" alt="Company Logo">
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-lg hover:scale-105 transform transition-all">
-          <img src="img/company4.jpg" alt="Company Logo" class="w-auto mx-auto">
+        <div class="marquee-item">
+          <img src="img/company4.jpg" alt="Company Logo">
+        </div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee-item">
+          <img src="img/company1.jpg" alt="Company Logo">
+        </div>
+
+        <div class="marquee-item">
+          <img src="img/company2.jpg" alt="Company Logo">
+        </div>
+
+        <div class="marquee-item">
+          <img src="img/company3.jpg" alt="Company Logo">
+        </div>
+
+        <div class="marquee-item">
+          <img src="img/company4.jpg" alt="Company Logo">
         </div>
 
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
 
     <!-- Our Services -->
       <section class="py-16 bg-black text-white">
@@ -473,8 +554,8 @@
       </section>
 
     <!-- Contact Section -->
-      <section class="py-16 bg-amber-content/50">
-        <div class="w-full sm:max-w-full md:max-w-3xl lg:max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <section class="py-16 bg-amber-content/50 bg-[#C9A14A] bg-opacity-15">
+        <div class="w-full bg-white border-2 :max-w-full md:max-w-3xl lg:max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start" id="ContactInfo">
           
           <!-- Contact Form -->
           <form class="space-y-6 bg-white bg-opacity-10 p-8 rounded-lg shadow-lg border border-white">
@@ -504,7 +585,7 @@
           </form>
 
           <!-- Contact Info -->
-          <div class="space-y-6">
+          <div class="space-y-6" id="ContactDetails">
             <h4 class="text-3xl font-serif font-semibold mb-4">Call or Visit</h4>
             
             <div class="space-y-4">
@@ -518,19 +599,27 @@
               <p>3190 HW-160, Suite F, Pahrump, Nevada 89048, United States</p>
 
               <!-- Clickable phone link -->
-              <p>
-                <a href="tel:2069196886" class="text-blue-500 underline hover:text-blue-700 transition">
-                  (206) 919-6886
-                </a>
-              </p>
-            </div>
+            <p class="text-base sm:text-lg">
+              <a
+                href="tel:2069196886"
+                class="group relative inline-block text-blue-500 hover:text-blue-700 transition-colors duration-300"
+              >
+                206-919-6886
+
+                <!-- Left underline -->
+                <span class="absolute -bottom-1 left-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+
+                <!-- Right underline -->
+                <span class="absolute -bottom-1 right-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+              </a>
+            </p>
 
             <!-- Office Hours Section -->
             <div x-data="{ open: false }" class="space-y-4">
               <h5 class="text-xl font-semibold">Office Hours</h5>
               
               <!-- Current status -->
-              <p class="text-green-500 font-medium">Open today: 08:00 am – 07:00 pm</p>
+              <p class="text-black font-medium">Open today: 08:00 am – 07:00 pm</p>
               
               <!-- Dropdown toggle -->
               <button 
@@ -587,7 +676,7 @@
 
 <!-- Footer Section -->
 <section class="bg-black text-white py-8">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 space-y-4 md:space-y-0">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 space-y-4 md:space-y-0" id="ExternalLink">
     
   
     <!-- Social Icons -->
@@ -607,18 +696,31 @@
         <p>
           <a href="https://www.google.com/maps/search/?api=1&query=3190+HW-160,+Suite+F,+Pahrump,+NV" 
             target="_blank" 
-            class="text-blue-500 underline hover:text-blue-700 transition">
+            class="group relative inline-block text-blue-500 hover:text-blue-700 transition-colors duration-300 ">
             3190 HW-160, Suite F, Pahrump, NV
-          </a>
-        </p>
+              <!-- Left underline -->
+                <span class="absolute -bottom-1 left-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+
+                <!-- Right underline -->
+                <span class="absolute -bottom-1 right-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+              </a>
+            </p>
 
         <!-- Clickable phone link -->
-        <p>
-          <a href="tel:2069196886" 
-            class="text-blue-500 underline hover:text-blue-700 transition">
-            (206) 919-6886
-          </a>
-        </p>
+          <p class="text-base sm:text-lg">
+              <a
+                href="tel:2069196886"
+                class="group relative inline-block text-blue-500 hover:text-blue-700 transition-colors duration-300"
+              >
+                206-919-6886
+
+                <!-- Left underline -->
+                <span class="absolute -bottom-1 left-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+
+                <!-- Right underline -->
+                <span class="absolute -bottom-1 right-1/2 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-1/2"></span>
+              </a>
+            </p>
       </div>
     <!-- Copyright -->
     <p class="text-sm text-gray-400 text-center md:text-right">
@@ -642,6 +744,34 @@ document.addEventListener('alpine:init', () => {
     }));
 });
 </script>
+
+<script>
+  const zoomOverlay = document.getElementById('image-zoom-overlay');
+  const zoomedImage = document.getElementById('zoomed-image');
+  const closeZoom = document.getElementById('close-zoom');
+
+  document.querySelectorAll('[data-zoom]').forEach(img => {
+    img.addEventListener('click', () => {
+
+      zoomedImage.src = img.src;
+      zoomOverlay.classList.remove('hidden');
+      zoomOverlay.classList.add('flex');
+      document.body.classList.add('zoom-open');
+    });
+  });
+
+  closeZoom.addEventListener('click', closeZoomOverlay);
+  zoomOverlay.addEventListener('click', e => {
+    if (e.target === zoomOverlay) closeZoomOverlay();
+  });
+
+  function closeZoomOverlay() {
+    zoomOverlay.classList.add('hidden');
+    zoomOverlay.classList.remove('flex');
+    document.body.classList.remove('zoom-open');
+  }
+</script>
+
 
 <script>
   // Parallax scroll effect
