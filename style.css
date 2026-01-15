@@ -185,9 +185,6 @@ body {
     font-weight: 300;
 }
 
-font-family: 'Cinzel', serif;
-font-family: 'Poppins', sans-serif;
-
 :root {
   --gold: #C9A14A;
   --charcoal: #111111;
@@ -247,6 +244,7 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
+  /*Scroll Animation*/
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -254,6 +252,23 @@ h1, h2, h3, h4, h5, h6 {
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out both;
 }
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out both;
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease-out both;
+}
+
 
 #hero-bg > div {
     animation: fadeInUp 1s ease-out both;

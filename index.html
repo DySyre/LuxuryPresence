@@ -99,12 +99,12 @@
     </section>
 
  <!-- Profile Section -->
-<section class="bg-black text-white flex items-center justify-center sm:min-h-40 py-8 sm:py-12">
+<section class="bg-black text-white flex items-center justify-center sm:min-h-40 py-8 sm:py-12"  data-animate="fade-up">
   <div class="container mx-auto px-4 text-center space-y-6">
     
     <!-- Big Center Image -->
     <div class="flex justify-center">
-      <div class="border-4 border-white shadow-2xl">
+      <div class="border-4 border-[#C9A14A] shadow-2xl">
         <img 
           src="img/Realtor.jpg"
           alt="Marci Metzger"
@@ -149,7 +149,7 @@
 
     
  <!-- Get It Sold Section -->
-<section class="py-16 bg-black text-white px-4">
+<section class="py-16 bg-black text-white px-4" data-animate="fade-left">
   <div class="max-w-6xl mx-auto space-y-12" id="GetSold">
 
     <!-- Section Title -->
@@ -463,7 +463,7 @@
 
 
     <!-- Our Services -->
-      <section class="py-16 bg-black text-white">
+      <section class="py-16 bg-black text-white" data-animate="fade-up">
         <div class="max-w-3xl lg:max-w-6xl mx-auto px-4">
           <h2 class="text-3xl md:text-4xl font-serif font-semibold text-center mb-10">Our Services</h2>
 
@@ -780,4 +780,42 @@ document.addEventListener('alpine:init', () => {
     const bg = document.getElementById('hero-bg');
     bg.style.transform = `translateY(${scrolled * 0.3}px)`; // Adjust 0.3 for speed
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1, // trigger when 10% of element is visible
+  };
+
+  const animateOnScroll = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const animation = el.dataset.animate;
+
+        switch (animation) {
+          case "fade-up":
+            el.classList.add("animate-fade-in-up");
+            break;
+          case "fade-left":
+            el.classList.add("animate-fade-in-left");
+            break;
+          case "fade-right":
+            el.classList.add("animate-fade-in-right");
+            break;
+        }
+
+        observer.unobserve(el); // animate only once
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+  document.querySelectorAll("[data-animate]").forEach(el => {
+    el.style.opacity = 0; // start invisible
+    observer.observe(el);
+  });
+});
 </script>
