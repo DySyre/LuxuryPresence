@@ -63,3 +63,72 @@ h1, h2, h3, h4, h5, h6 {
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out both;
 }
+
+#hero-bg > div {
+    animation: fadeInUp 1s ease-out both;
+    animation-delay: 0.5s;
+}
+
+.logo-img {
+    height: 64px; /* Default height */
+    width: auto;
+    transition: height 0.3s ease;
+    cursor: crosshair;
+}
+
+/* Message */
+#MessageText {
+    color: #000;
+}
+
+
+
+/* Mobile styling */
+
+/* Base (mobile first) */
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-img {
+    height: 3rem; /* h-12 = 48px */
+    width: auto;
+}
+
+/* Small screens ≥ 640px (Tailwind sm) */
+@media (min-width: 640px) {
+    .logo-img {
+        height: 3.5rem; /* h-14 = 56px */
+    }
+
+    #FrontPage > div.relative.text-center.px-4.z-10 > h1
+  {
+      font-size: 128px;
+    }
+
+    #FrontPage > div.relative.text-center.px-4.z-10 > p
+  { 
+    font-size: 64px;
+    }
+
+    #FrontPage > div.relative.text-center.px-4.z-10 > h6
+    {
+      font-size: 48px;
+    }
+    #FrontPage > div.relative.text-center.px-4.z-10 > button
+    {
+      font-size: 34px;
+    }
+
+}
+
+
+
+
+/* Medium screens ≥ 768px (Tailwind md) */
+@media (min-width: 768px) {
+    .logo-img {
+        height: 4rem; /* h-16 = 64px */
+    }
+}

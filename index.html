@@ -55,34 +55,21 @@
     <!-- Main content -->
     <div class="flex-1 transition-all duration-300" :class="open ? 'ml-64' : 'ml-0'">
         <!-- Navbar -->
-        <div class="navbar shadow-sm bg-white text-gray-800 mt-4 p-4 border-b border-gray-200">
-          <div class="navbar-start">
-          <button 
-            @click="toggleSidebar" 
-            class="btn btn-ghost text-gray-800 text-2xl px-4 py-2"
-          >
-            ☰
-          </button>
-        </div>
-            <!-- <div class="navbar-center justify-center">
-                <a href="index.html">
-                    <img src="img/marci.jpg" alt="Company Logo" class="h-16 w-auto">
-                </a>
-            </div>
-        </div> -->
-            <div class="navbar-end flex items-center gap-4">
-                <a href="index.html">
-                    <img src="img/marci.jpg" alt="Company Logo" class="h-20 w-full">
-                </a>
-            </div>
-        </div>
+        <div class="navbar shadow-sm bg-white text-gray-800 mt-2 p-2 border-b border-gray-200" id="LogoBorder">
+
+          <div class="flex justify-center flex-1">
+              <a href="index.html">
+                  <img src="img/marci.jpg" alt="Company Logo" class="max-h-64 max-w-2xl" id="logo-img">
+              </a>
+          </div>
+      </div>
 
     <!-- Page Content -->
-      <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="FrontPage">
       <!-- Background image with parallax -->
       <div class="absolute inset-0 transform-gpu" id="hero-bg">
         <img src="img/mtnfallspond.jpg" alt="Luxury Background" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div> <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div> <!-- Dark overlay -->
       </div>
 
       <!-- Content -->
@@ -108,14 +95,18 @@
   <div class="container mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 px-4">
     
     <!-- Image -->
-    <div class="flex-shrink-0 text-center md:text-left">
+    <div class="flex-shrink-0 text-center md:text-left max-h-full">
       <img 
         src="img/Realtor.jpg" 
-        alt="Marci Metzger" 
-        class="w-40 h-40 md:w-64 md:h-64 object-cover rounded-full border-4 border-white shadow-lg mx-auto md:mx-0
-               transition-transform duration-500 hover:scale-105"
+        alt="Marci Metzger"
+        class="aspect-square w-40 md:w-64 max-h-64
+              object-cover rounded-full
+              border-4 border-white shadow-lg
+              mx-auto md:mx-0
+              transition-transform duration-500 hover:scale-105"
       >
     </div>
+
     
     <!-- Details -->
     <div class="flex-1 text-center md:text-left space-y-4 mt-6 md:mt-0 animate-fade-in-up">
@@ -492,17 +483,20 @@
             <input
               type="text"
               placeholder="Name"
+              id="MessageText"
               class="w-full bg-transparent text-white placeholder-gray-400 border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400"
             />
 
             <input
               type="email"
               placeholder="Email"
+              id="MessageText"
               class="w-full bg-transparent text-white placeholder-gray-400 border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-400"
             />
 
             <textarea
               placeholder="Message"
+              id="MessageText"
               class="w-full bg-transparent text-white placeholder-gray-400 border-2 border-gray-300 rounded-lg px-4 py-3 min-h-[140px] focus:outline-none focus:border-blue-400"
             ></textarea>
             
