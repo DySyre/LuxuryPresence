@@ -181,9 +181,51 @@
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cinzel', sans-serif;
     font-weight: 300;
 }
+/* ===============================
+   TYPOGRAPHY SYSTEM (80 / 20)
+   =============================== */
+
+/* 80% — Primary UI & Body */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* 20% — Luxury Headings */
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Sub-headings (slightly softer luxury) */
+h5, h6 {
+  font-family: 'Bebas Neue', serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Elegant accent text (VERY LIMITED use) */
+.elegant-text,
+.elegant-text-h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  opacity: 0.9;
+}
+
+.testimonial-quote {
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+
 
 :root {
   --gold: #C9A14A;
@@ -191,20 +233,16 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cinzel', serif;
-    font-weight: 900;
-}
-
 .elegant-text, .elegant-text-h6 {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 400; /* Regular */
-    font-style: italic; /* Optional for more elegance */
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.9;
 }
 
 /* Navbar font */
 .navbar {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Button hover effect */
@@ -397,7 +435,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Medium screens ≥ 768px (Tailwind md)  h-16 = 64px */
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     .logo-img {
         height: 4rem; 
     }
@@ -420,7 +458,7 @@ h1, h2, h3, h4, h5, h6 {
         width: 80% !important;
         margin: 0 auto !important;
     }
-} */
+}
 
 
 /* Desktop: 769px and above */
